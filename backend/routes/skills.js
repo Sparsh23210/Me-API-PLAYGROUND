@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Skill, Profile } = require("../schema");
 
-// Get all skills (with optional filters & grouping)
+
 router.get("/", async (req, res) => {
   try {
     const { category, grouped, top } = req.query;
@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get top skills
+
 router.get("/top", async (req, res) => {
   try {
     const { limit = 10 } = req.query;
@@ -55,7 +55,7 @@ router.get("/top", async (req, res) => {
   }
 });
 
-// Get all categories with counts
+
 router.get("/categories", async (req, res) => {
   try {
     const categories = await Skill.aggregate([
@@ -75,7 +75,7 @@ router.get("/categories", async (req, res) => {
   }
 });
 
-// Get skills by category (keep AFTER /categories route!)
+
 router.get("/category/:category", async (req, res) => {
   try {
     const { category } = req.params;
@@ -91,7 +91,7 @@ router.get("/category/:category", async (req, res) => {
   }
 });
 
-// Create new skill
+
 router.post("/", async (req, res) => {
   try {
     const { name, category, proficiency_level, years_experience } = req.body;
@@ -128,7 +128,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Update skill
+
 router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -153,7 +153,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete skill
+
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
